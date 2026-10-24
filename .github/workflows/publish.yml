@@ -1,4 +1,4 @@
-name: Publish to GHCR
+name: Publish to GHCR and Docker Hub
 
 on:
   push:
@@ -57,11 +57,19 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Extract image metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ steps.release.outputs.image }}
+          images: |
+            ${{ steps.release.outputs.image }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/rehearsalhq
           flavor: latest=false
           tags: |
             type=semver,pattern={{version}}
