@@ -3,7 +3,7 @@
  * Repository: https://github.com/dcoffin88/RehearsalHQ
  */
 
-export const CURRENT_APP_VERSION = '1.2.0';
+export const CURRENT_APP_VERSION = '1.2.1';
 export const GITHUB_REPO_OWNER = 'dcoffin88';
 export const GITHUB_REPO_NAME = 'RehearsalHQ';
 export const GITHUB_REPO_URL = `https://github.com/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}`;
